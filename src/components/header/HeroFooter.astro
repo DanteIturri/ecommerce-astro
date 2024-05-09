@@ -1,0 +1,71 @@
+---
+// Icons
+import Burguer from '../icons/Burguer.astro';
+import Burguers from '../icons/Burguers.astro';
+import Drinks from '../icons/Drinks.astro';
+---
+
+<div class="hero-footer">
+    <div class="hero-footer-items">
+      <article class="hero-footer-item">
+        <Burguer />
+        <div class="hero-footer-txt">
+          <p><span class="outstanding-text">100</span> VARIEDADES DIFERENTES</p>
+          <p class="outstanding-text">PROBALAS TODAS</p>
+        </div>
+      </article>
+      <article class="hero-footer-item">
+        <Burguers />
+        <div class="hero-footer-txt">
+          <p class="outstanding-text">CHEF GOURMET</p>
+          <p >PREPARAN NUEVAS BURGUER</p>
+        </div>
+      </article>
+      <article class="hero-footer-item">
+        <Drinks />
+        <div class="hero-footer-txt">
+            <p>GRAN VARIEDAD DE BEBIDAS</p>
+            <p class=" outstanding-text">ELEGÍ UNA PARA ACOMPAÑAR</p>
+        </div>
+      </article>
+    </div>
+  </div>
+<style>
+    .hero-footer {
+    background-color: #b73700;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-footer-items {
+    width: 75%;
+    height: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+  }
+  @media (max-width: 390px) {
+    .hero-footer-items {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  .hero-footer-item {
+    display: flex;
+    height: 72px;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background-color: #b73700;
+    transition: 1s;
+  }
+  .hero-footer-item:hover {
+    cursor: pointer;
+    background-color: #912b00;
+  }
+  .hero-footer-txt {
+    font-family: var(--primary-font-family);
+    font-size: 1.4rem;
+  }
+</style>

@@ -1,0 +1,236 @@
+---
+import { Image } from 'astro:assets';
+import Product1 from '../../assets/images/product-image-1.png';
+---
+
+<div class="main">
+  <div class="content">
+    <h1>Menú Big Burguer</h1>
+    <nav>
+      <div class="nav-cart">
+        <button  id="button_cart"><i class="bx bxs-cart bx-lg"></i></button>
+      </div>
+    </nav>
+
+    <section class="product">
+      <div class="product-grid">
+        <div class="product-cart">
+          <Image src={Product1} alt="Burguer 1" class="product-image" />
+
+          <div class="product-text">
+            <h2>Kind Burguer</h2>
+            <p>+ Coca Cola & Papas</p>
+          </div>
+          <div class="product-vote">
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+          </div>
+          <div class="product-price">
+            <span>
+              <p class="product-price-old">$50</p>
+            </span>
+            <span>
+              <p class="product-price-new">$40</p>
+            </span>
+          </div>
+          <div class="product-button-add">
+            <button class="btn-add-cart"><i class="bx bxs-cart-add"></i></button
+            >
+          </div>
+        </div>
+        <div class="product-cart">
+          <Image src={Product1} alt="Burguer 1" class="product-image" />
+
+          <div class="product-text">
+            <h2>Kind Burguer</h2>
+            <p>+ Coca Cola & Papas</p>
+          </div>
+          <div class="product-vote">
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+          </div>
+          <div class="product-price">
+            <span>
+              <p class="product-price-old">$50</p>
+            </span>
+            <span>
+              <p class="product-price-new">$40</p>
+            </span>
+          </div>
+          <div class="product-button-add">
+            <button class="btn-add-cart"><i class="bx bxs-cart-add"></i></button
+            >
+          </div>
+        </div>
+        <div class="product-cart">
+          <Image src={Product1} alt="Burguer 1" class="product-image" />
+
+          <div class="product-text">
+            <h2>Kind Burguer</h2>
+            <p>+ Coca Cola & Papas</p>
+          </div>
+          <div class="product-vote">
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+          </div>
+          <div class="product-price">
+            <span>
+              <p class="product-price-old">$50</p>
+            </span>
+            <span>
+              <p class="product-price-new">$40</p>
+            </span>
+          </div>
+          <div class="product-button-add">
+            <button class="btn-add-cart"><i class="bx bxs-cart-add"></i></button
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer class="footer">
+    <h6>© 2024 BLACK WEB DESIGN</h6>
+</footer>
+</div>
+
+<style>
+  .main {
+    width: 100%;
+    font-family: var(--primary-font-family);
+  }
+  .content {
+    width: 120rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .content h1 {
+    display: flex;
+    justify-content: center;
+    width: 42rem;
+    margin: 3.2rem auto;
+    text-align: center;
+    font-weight: 900;
+    font-size: 4rem;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+    border-bottom: 0.4rem solid #5c5c68;
+    margin-bottom: 6.2rem;
+  }
+  .nav-cart {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 3.4rem;
+    margin-bottom: 3.2rem;
+  }
+  .nav-cart button {
+    color: #fafafa;
+    font-size: 2.4rem;
+    cursor: pointer;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8rem 6rem;
+    margin-bottom: 6rem;
+  }
+  /* product css */
+  .product-cart {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 0 2rem;
+    align-items: center;
+    background: #2c2c39;
+    box-shadow: 8px 16px 23px #111116;
+    border-radius: 8px;
+  }
+  .product-cart:hover {
+    box-shadow: 0px 0px 65px 2px #ad3400af;
+    border: 0.15rem solid #ad34008a;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+  }
+  .product-text {
+    text-align: center;
+  }
+  .product-text h2 {
+    font-weight: 500;
+    font-size: 2.4rem;
+  }
+  .product-text p {
+    font-size: 1.2rem;
+    margin-top: 0.6rem;
+    line-height: 1.9rem;
+  }
+  .product-vote {
+  display: flex;
+  gap: 0.5rem;
+  color: #d0bc04;
+  font-size: 2.5rem;
+}
+.product-price {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.product-price-old {
+  font-size: 2.6rem;
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+.product-price-new {
+  font-size: 4rem;
+  font-weight: 500;
+}
+.product-button-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+.product-button-add button {
+  background: #cb3e02;
+  width: 88.97px;
+  height: 67px;
+  padding-top: 1.2rem;
+
+  filter: drop-shadow(4px 4px 7px rgba(0, 0, 0, 0.43));
+  border-radius: 0.8rem;
+  font-size: 4.8rem;
+  color: white;
+}
+.product-button-add button:hover {
+  background: #cb3e02ad;
+  color: #d0bc04;
+}
+.product-button-add button:active {
+  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.616));
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 96rem;
+  height: 16.8rem;
+  margin: 0 auto;
+  border-top: 0.6rem solid #5c5c68;
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+</style>
