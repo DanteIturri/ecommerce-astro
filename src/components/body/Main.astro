@@ -1,6 +1,13 @@
 ---
 import { Image } from 'astro:assets';
-import Product1 from '../../assets/images/product-image-1.png';
+import Product1 from '../../assets/images/product-1.png';
+
+import { GET } from '../../pages/api/products.ts';
+
+
+let response = await GET(Astro)
+const data = await response.json()
+console.log(data)
 ---
 
 <div class="main">
@@ -8,17 +15,34 @@ import Product1 from '../../assets/images/product-image-1.png';
     <h1>Menú Big Burguer</h1>
     <nav>
       <div class="nav-cart">
-        <button  id="button_cart"><i class="bx bxs-cart bx-lg"></i></button>
+        <button id="button_cart">
+          <i class="bx bxs-cart bx-lg"></i>
+        </button>
+      </div>
+      <div class="car_list cart_list-d-none">
+        <!-- Start Cart Item-->
+        <div class="cart__container_item"></div>
+        <!-- End Cart Item-->
+        <hr />
+        <div class="cart_total">
+          <div class="cart_total-sale">
+            <p>$1250</p>
+          </div>
+          <div class="cart_button">
+            <a href=""><i class="bx bxs-trash"></i></a>
+            <a href=""><i class="bx bx-check-square"></i></a>
+          </div>
+        </div>
       </div>
     </nav>
 
     <section class="product">
       <div class="product-grid">
+        <!-- Star Products Card -->
         <div class="product-cart">
           <Image src={Product1} alt="Burguer 1" class="product-image" />
-
           <div class="product-text">
-            <h2>Kind Burguer</h2>
+            <h2>{ data.title }</h2>
             <p>+ Coca Cola & Papas</p>
           </div>
           <div class="product-vote">
@@ -41,67 +65,21 @@ import Product1 from '../../assets/images/product-image-1.png';
             >
           </div>
         </div>
-        <div class="product-cart">
-          <Image src={Product1} alt="Burguer 1" class="product-image" />
-
-          <div class="product-text">
-            <h2>Kind Burguer</h2>
-            <p>+ Coca Cola & Papas</p>
-          </div>
-          <div class="product-vote">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-          </div>
-          <div class="product-price">
-            <span>
-              <p class="product-price-old">$50</p>
-            </span>
-            <span>
-              <p class="product-price-new">$40</p>
-            </span>
-          </div>
-          <div class="product-button-add">
-            <button class="btn-add-cart"><i class="bx bxs-cart-add"></i></button
-            >
-          </div>
-        </div>
-        <div class="product-cart">
-          <Image src={Product1} alt="Burguer 1" class="product-image" />
-
-          <div class="product-text">
-            <h2>Kind Burguer</h2>
-            <p>+ Coca Cola & Papas</p>
-          </div>
-          <div class="product-vote">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-          </div>
-          <div class="product-price">
-            <span>
-              <p class="product-price-old">$50</p>
-            </span>
-            <span>
-              <p class="product-price-new">$40</p>
-            </span>
-          </div>
-          <div class="product-button-add">
-            <button class="btn-add-cart"><i class="bx bxs-cart-add"></i></button
-            >
-          </div>
-        </div>
+        <!-- End Products Card -->
       </div>
     </section>
   </div>
   <footer class="footer">
     <h6>© 2024 BLACK WEB DESIGN</h6>
-</footer>
+  </footer>
 </div>
+<script>
+  const $buttonCart = document.getElementById('button_cart');
+  const $card = document.querySelector('.car_list');
+  $buttonCart.addEventListener('click', () => {
+    $card.classList.toggle('cart_list-d-none');
+  });
+</script>
 
 <style>
   .main {
@@ -179,58 +157,128 @@ import Product1 from '../../assets/images/product-image-1.png';
     line-height: 1.9rem;
   }
   .product-vote {
-  display: flex;
-  gap: 0.5rem;
-  color: #d0bc04;
-  font-size: 2.5rem;
-}
-.product-price {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-.product-price-old {
-  font-size: 2.6rem;
-  text-decoration: line-through;
-  opacity: 0.8;
-}
-.product-price-new {
-  font-size: 4rem;
-  font-weight: 500;
-}
-.product-button-add {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 4rem;
-}
-.product-button-add button {
-  background: #cb3e02;
-  width: 88.97px;
-  height: 67px;
-  padding-top: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+    color: #d0bc04;
+    font-size: 2.5rem;
+  }
+  .product-price {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .product-price-old {
+    font-size: 2.6rem;
+    text-decoration: line-through;
+    opacity: 0.8;
+  }
+  .product-price-new {
+    font-size: 4rem;
+    font-weight: 500;
+  }
+  .product-button-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+  .product-button-add button {
+    background: #cb3e02;
+    width: 88.97px;
+    height: 67px;
+    padding-top: 1.2rem;
 
-  filter: drop-shadow(4px 4px 7px rgba(0, 0, 0, 0.43));
-  border-radius: 0.8rem;
-  font-size: 4.8rem;
-  color: white;
-}
-.product-button-add button:hover {
-  background: #cb3e02ad;
-  color: #d0bc04;
-}
-.product-button-add button:active {
-  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.616));
-}
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 96rem;
-  height: 16.8rem;
-  margin: 0 auto;
-  border-top: 0.6rem solid #5c5c68;
-  font-size: 3.2rem;
-  font-weight: 500;
-}
+    filter: drop-shadow(4px 4px 7px rgba(0, 0, 0, 0.43));
+    border-radius: 0.8rem;
+    font-size: 4.8rem;
+    color: white;
+  }
+  .product-button-add button:hover {
+    background: #cb3e02ad;
+    color: #d0bc04;
+  }
+  .product-button-add button:active {
+    filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.616));
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 96rem;
+    height: 16.8rem;
+    margin: 0 auto;
+    border-top: 0.6rem solid #5c5c68;
+    font-size: 3.2rem;
+    font-weight: 500;
+  }
+  .car_list {
+    position: absolute;
+    width: auto;
+    height: auto;
+    right: 0;
+    margin-top: -20px;
+    margin-right: 30px;
+
+    background-color: whitesmoke;
+    z-index: 2;
+    border-radius: 0.8rem;
+    padding: 2rem;
+    box-shadow: 0px 0px 15cap #fdfdfd31;
+  }
+  .cart_list-d-none {
+    display: none;
+  }
+  .cart_list-item {
+    display: flex;
+    gap: 3.2rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    background: #2c2c39;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    box-shadow: 0.4rem 0.4rem 35px rgba(6, 2, 12, 0.705);
+  }
+  .cart_item-img {
+    width: 80px;
+    height: 80px;
+    background: #5c5c68;
+  }
+  .cart_item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cart_item-text {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    font-size: 2.2em;
+  }
+  .cart_List-button a {
+    color: #b73700;
+    font-size: 4.5rem;
+  }
+  .cart_total {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 4rem;
+    padding: 1.2rem 0;
+    font-weight: 700;
+  }
+  .cart_button {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .cart_button a {
+    color: #2c2c39;
+    padding: 0.5rem;
+  }
+  .cart_total-sale {
+    color: #b73700;
+  }
 </style>
